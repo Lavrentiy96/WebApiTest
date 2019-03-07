@@ -13,9 +13,7 @@
     <input type="text" placeholder="to" name="to" id="to1">
 
     <input id="sendBtn" type="submit" value="input Date Interval" />
-    <input id="outBtn" type="submit" value="output Date Interval" />
-
-
+   
 
 </form>
 @section scripts{
@@ -37,22 +35,5 @@
             })
         })
     </script>
-    <script>
-        $(function () {
-            $("#myForm").submit(function (e) {
-                e.preventDefault();
-                let a = $("#to1").val();
-                let b = $("#from1").val();
-                let myUrl = "";
-                myUrl += ("\\api\\values\\" + a + "\\" + b);
-                $.ajax({
-                    url: myUrl,
-                    method: "Get",
-                    success: function (data) {
-                        console.log(data);
-                    }
-                })
-            })
-        })
-    </script>
+   
 }
