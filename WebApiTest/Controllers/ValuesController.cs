@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,31 +10,21 @@ namespace WebApiTest.Controllers
 {
     public class ValuesController : ApiController
     {
+        MyDal myDal = new MyDal();
         // GET api/values
-        public IEnumerable<string> Get()
+        [HttpGet]
+        public IEnumerable<DateInterval> ReadIntervals(string from, string to)
         {
-            return new string[] { "value1", "value2" };
+            var results = myDal.ReadIntervals(from, to).ToList();
+            //results.Add(new DateInterval { Id = 1, From = DateTime.Now, To = DateTime.Now });
+            return results;
         }
-
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+        
         // POST api/values
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public void CreateInterval(string from, string to)
         {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+                myDal.CreateInterval(to,from);
         }
     }
 }

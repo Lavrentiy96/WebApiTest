@@ -16,7 +16,7 @@ namespace WebApiTest
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{from}/{to}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
